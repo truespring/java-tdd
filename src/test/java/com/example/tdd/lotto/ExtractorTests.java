@@ -4,19 +4,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-import java.util.Objects;
+import java.util.List;
 import java.util.Stack;
 
 import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
 
 
-public class MachineTests {
-    private Machine machine;
+public class ExtractorTests {
+    private Extractor machine;
 
     @Before
     public void setUp() {
-        machine = new Machine();
+        machine = new Extractor();
     }
 
     @Test
@@ -31,9 +30,9 @@ public class MachineTests {
     }
 
     @Test
-    public void 숫자공이_추출되는가() {
-        Integer ball = machine.extractBall();
+    public void 여섯개의_공이_뽑아지는가() {
+        List<Integer> extractedBalls = machine.extractBall();
 
-        assertTrue(Objects.nonNull(ball));
+        assertEquals(6, extractedBalls.size());
     }
 }
