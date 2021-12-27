@@ -21,10 +21,10 @@ public class ExchangeMachine {
                 autoExtract(lottoPaper);
                 break;
             case 6:
-//                manualExtract(lottoPaper);
                 break;
             default:
-//                semiAutoExtract(lottoPaper);
+                removeDuplicate(lottoPaper);
+                semiAutoExtract(lottoPaper);
                 break;
         }
         return lottoPaper;
@@ -33,6 +33,20 @@ public class ExchangeMachine {
     private void autoExtract(List<Integer> lottoPaper) {
         for (int i = 0; i < EXTRACT_COUNT; i++) {
             lottoPaper.add(lottoNumbers.pop());
+        }
+    }
+
+    private void semiAutoExtract(List<Integer> lottoPaper) {
+        int count = EXTRACT_COUNT - lottoPaper.size();
+
+        for (int i = 0; i < count; i++) {
+            lottoPaper.add(lottoNumbers.pop());
+        }
+    }
+
+    private void removeDuplicate(List<Integer> lottoPaper) {
+        for (Integer integer : lottoPaper) {
+            lottoNumbers.removeElement(integer);
         }
     }
 
