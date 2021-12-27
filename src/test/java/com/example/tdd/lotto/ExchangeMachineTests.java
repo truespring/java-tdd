@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Stack;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 public class ExchangeMachineTests {
     private ExchangeMachine exchangeMachine;
