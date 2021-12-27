@@ -9,12 +9,19 @@ public class ExchangeMachine {
     private static final int EXTRACT_COUNT = 6;
 
     private Stack<Integer> lottoNumbers;
+    private boolean isCountCheck;
 
     public ExchangeMachine() {
         lottoNumbers = new Stack<>();
     }
 
-    public List<Integer> inputToMachine(List<Integer> lottoPaper) {
+    public void inputToMachine(List<Integer> lottoPaper) {
+        if(!validationCheck(lottoPaper)) {
+            System.out.println("6개 이하의 수를 입력하세요");
+            isCountCheck = false;
+            return;
+        }
+
         lottoNumbers = initNumbers();
         Collections.shuffle(lottoNumbers);
 
@@ -30,7 +37,7 @@ public class ExchangeMachine {
                 break;
         }
 
-        return lottoPaper;
+        isCountCheck = true;
     }
 
     private void autoExtract(List<Integer> lottoPaper) {
@@ -61,5 +68,9 @@ public class ExchangeMachine {
         }
 
         return lottoNumbers;
+    }
+
+    private boolean validationCheck(List<Integer> lottoPaper) {
+        return lottoPaper.size() <= 6;
     }
 }

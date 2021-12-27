@@ -79,4 +79,21 @@ public class ExchangeMachineTests {
 
         assertEquals(44, numbers.size());
     }
+
+    @Test
+    public void 숫자가_6초과일때_처리되는가() throws NoSuchFieldException, IllegalAccessException {
+        Field isCountCheck = exchangeMachine.getClass().getDeclaredField("isCountCheck");
+
+        isCountCheck.setAccessible(true);
+
+        for (int i = 0; i < 8; i++) {
+            lottoPaper.add(i);
+        }
+
+        exchangeMachine.inputToMachine(lottoPaper);
+
+        boolean resultBoolean = (Boolean) isCountCheck.get(exchangeMachine);
+
+        assertEquals(false, resultBoolean);
+    }
 }
