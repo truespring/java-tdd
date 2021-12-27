@@ -11,11 +11,13 @@ public class ExchangeMachine {
     private Stack<Integer> lottoNumbers;
 
     public ExchangeMachine() {
-        lottoNumbers = initNumbers();
-        Collections.shuffle(lottoNumbers);
+        lottoNumbers = new Stack<>();
     }
 
     public List<Integer> inputToMachine(List<Integer> lottoPaper) {
+        lottoNumbers = initNumbers();
+        Collections.shuffle(lottoNumbers);
+
         switch(lottoPaper.size()) {
             case 0:
                 autoExtract(lottoPaper);
@@ -27,6 +29,7 @@ public class ExchangeMachine {
                 semiAutoExtract(lottoPaper);
                 break;
         }
+
         return lottoPaper;
     }
 
@@ -51,7 +54,7 @@ public class ExchangeMachine {
     }
 
     private Stack<Integer> initNumbers() {
-        lottoNumbers = new Stack<>();
+        lottoNumbers.clear();
 
         for (int i = 1; i <= LOTTO_MAX_NUMBER; i++) {
             lottoNumbers.push(i);

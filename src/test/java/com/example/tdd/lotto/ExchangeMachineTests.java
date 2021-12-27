@@ -40,7 +40,7 @@ public class ExchangeMachineTests {
         lottoPaper.add(1);
 
         assertEquals(1, lottoPaper.size());
-        assertEquals(45, resultNumbers.size());
+        assertEquals(0, resultNumbers.size());
 
         exchangeMachine.inputToMachine(lottoPaper);
 
