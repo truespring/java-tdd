@@ -16,7 +16,7 @@ public class ExchangeMachine {
     }
 
     public void inputToMachine(List<Integer> lottoPaper) {
-        if(!validationCheck(lottoPaper)) {
+        if (!validationCheck(lottoPaper)) {
             System.out.println("6개 이하의 수를 입력하세요");
             isCountCheck = false;
             return;
@@ -25,7 +25,13 @@ public class ExchangeMachine {
         lottoNumbers = initNumbers();
         Collections.shuffle(lottoNumbers);
 
-        switch(lottoPaper.size()) {
+        fillNumber(lottoPaper);
+
+        isCountCheck = true;
+    }
+
+    private void fillNumber(List<Integer> lottoPaper) {
+        switch (lottoPaper.size()) {
             case 0:
                 autoExtract(lottoPaper);
                 break;
@@ -36,8 +42,6 @@ public class ExchangeMachine {
                 semiAutoExtract(lottoPaper);
                 break;
         }
-
-        isCountCheck = true;
     }
 
     private void autoExtract(List<Integer> lottoPaper) {
